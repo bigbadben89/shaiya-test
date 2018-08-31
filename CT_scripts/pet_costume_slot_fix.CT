@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="18">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"pet &amp; costume slot fix"</Description>
+      <LastState Activated="0"/>
+      <Color>80000008</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+label(pet)
+label(costume)
+label(fail)
+
+newmem: //this is allocated memory, you have read,write,execute access
+cmp eax,0e
+JE pet
+cmp eax,0f
+JE costume
+
+originalcode:
+cmp eax,0d
+ja ps_game.exe+6846B
+jmp exit
+
+pet:
+cmp [esi],(int)120001
+jl fail
+cmp [esi],(int)120255
+jG fail
+jmp originalcode
+
+costume:
+cmp [esi],(int)150001
+jl fail
+cmp [esi],(int)150255
+jG fail
+jmp originalcode
+
+fail:
+xor al,al
+pop esi
+ret
+
+exit:
+jmp returnhere
+
+"ps_game.exe"+68385:
+jmp newmem
+nop
+nop
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"ps_game.exe"+68385:
+cmp eax,0d
+ja ps_game.exe+6846B
+//Alt: db 83 F8 0F 0F 87 DD 00 00 00
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

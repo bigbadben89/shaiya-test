@@ -1,0 +1,2 @@
+db.user=Shaiya
+db.pass=Shaiya123

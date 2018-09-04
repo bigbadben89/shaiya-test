@@ -1,22 +1,24 @@
-import sys
+from os import getenv
+#import pymssql
 
-def execute(scriptPath):
-    with open(scriptPath, 'r') as inp:
-        for line in inp:
-            if line == 'GO\n':
-                c.execute(sqlQuery)
-                sqlQuery = ''
-            elif 'PRINT' in line:
-                disp = line.split("'")[1]
-                print(disp, '\r')
-            else:
-                sqlQuery = sqlQuery + line
-    inp.close()
+server = getenv("PYMSSQL_TEST_SERVER")
+user = getenv("PYMSSQL_TEST_USERNAME")
+password = getenv("PYMSSQL_TEST_PASSWORD")
+
+print server
+dbFile = "../config/db.txt"
+
+def parseConfig():
+    sql = {}
+    with open(dbFile) as f:
+        for line in f.readlines():
+            l = line.strip().split("=")
+            sql[l[0]] = l[1]
+    return sql 
 
 def main():
-    sqlFile = sys.argv[1];
-    print 'Executing %s' % sqlFile
-    execute(sqlFile);
+    sql = parseConfig()
+    print sql
     
 if __name__== "__main__":
     main()    

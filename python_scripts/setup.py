@@ -3,9 +3,11 @@ import socket
 psGameFile = "C:\\ShaiyaServer\\PSM_Client\\Bin\\Config\\ps_game.ini"
 psSessionFile = "C:\\ShaiyaServer\\PSM_Client\\Bin\\Config\\ps_session.ini"
 
+defaultServerName = "Shaiya SGolden"
+
 def replaceInFile(filename, fromText, toText):
     if toText == "":
-        toText = "Shaiya SGolden"
+        toText = defaultServerName
     f = open(filename, "r")
     lines = f.readlines()
     f.close()
@@ -32,7 +34,7 @@ def main():
 
     print "########################################"
     print ""
-    print "*** DEFAULT SERVER NAME: Shaiya SGolden"
+    print "*** DEFAULT SERVER NAME: " + defaultServerName
     print ""
     print "*** YOU HAVE CHANGED SERVER NAME TO " + serverName
     print ""

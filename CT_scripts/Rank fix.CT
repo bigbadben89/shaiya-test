@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="24">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>111</ID>
+      <Description>"rank fix"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+label(rank1)
+label(rank2)
+label(rank3)
+label(rank4)
+label(rank5)
+label(rank6)
+label(rank7)
+label(rank8)
+label(rank9)
+label(rank10)
+label(rank11)
+label(rank12)
+label(rank13)
+label(rank14)
+label(rank15)
+label(rank16)
+label(rank17)
+label(rank18)
+label(rank19)
+label(rank20)
+label(rank21)
+label(rank22)
+label(rank23)
+label(rank24)
+label(rank25)
+label(rank26)
+label(rank27)
+label(rank28)
+label(rank29)
+label(rank30)
+label(rank31)
+
+newmem: //this is allocated memory, you have read,write,execute access
+cmp ecx,(int)50
+JL rank1
+cmp ecx,(int)300
+JL rank2
+cmp ecx,(int)1000
+JL rank3
+cmp ecx,(int)5000
+JL rank4
+cmp ecx,(int)10000
+JL rank5
+cmp ecx,(int)20000
+JL rank6
+cmp ecx,(int)30000
+JL rank7
+cmp ecx,(int)40000
+JL rank8
+cmp ecx,(int)50000
+JL rank9
+cmp ecx,(int)70000
+JL rank10
+cmp ecx,(int)90000
+JL rank11
+cmp ecx,(int)110000
+JL rank12
+cmp ecx,(int)130000
+JL rank13
+cmp ecx,(int)150000
+JL rank14
+cmp ecx,(int)200000
+JL rank15
+cmp ecx,(int)250000
+JL rank16
+cmp ecx,(int)300000
+JL rank17
+cmp ecx,(int)350000
+JL rank18
+cmp ecx,(int)450000
+JL rank19
+cmp ecx,(int)500000
+JL rank20
+cmp ecx,(int)550000
+JL rank21
+cmp ecx,(int)600000
+JL rank22
+cmp ecx,(int)650000
+JL rank23
+cmp ecx,(int)700000
+JL rank24
+cmp ecx,(int)750000
+JL rank25
+cmp ecx,(int)800000
+JL rank26
+cmp ecx,(int)850000
+JL rank27
+cmp ecx,(int)900000
+JL rank28
+cmp ecx,(int)950000
+JL rank29
+cmp ecx,(int)900000
+JL rank30
+cmp ecx,(int)1000000
+JGE rank31
+
+
+rank1:
+mov ax,1
+mov [esp+10],ax
+jmp exit
+
+rank2:
+mov ax,2
+mov [esp+10],ax
+jmp exit
+
+rank3:
+mov ax,3
+mov [esp+10],ax
+jmp exit
+
+rank4:
+mov ax,4
+mov [esp+10],ax
+jmp exit
+
+rank5:
+mov ax,5
+mov [esp+10],ax
+jmp exit
+
+rank6:
+mov ax,6
+mov [esp+10],ax
+jmp exit
+
+rank7:
+mov ax,7
+mov [esp+10],ax
+jmp exit
+
+rank8:
+mov ax,8
+mov [esp+10],ax
+jmp exit
+
+rank9:
+mov ax,9
+mov [esp+10],ax
+jmp exit
+
+rank10:
+mov ax,(int)10
+mov [esp+10],ax
+jmp exit
+
+rank11:
+mov ax,(int)10
+mov [esp+10],ax
+jmp exit
+
+rank12:
+mov ax,(int)10
+mov [esp+10],ax
+jmp exit
+
+rank13:
+mov ax,(int)12
+mov [esp+10],ax
+jmp exit
+
+rank14:
+mov ax,(int)12
+mov [esp+10],ax
+jmp exit
+
+rank15:
+mov ax,(int)12
+mov [esp+10],ax
+jmp exit
+
+rank16:
+mov ax,(int)15
+mov [esp+10],ax
+jmp exit
+
+rank17:
+mov ax,(int)15
+mov [esp+10],ax
+jmp exit
+
+rank18:
+mov ax,(int)15
+mov [esp+10],ax
+jmp exit
+
+rank19:
+mov ax,(int)19
+mov [esp+10],ax
+jmp exit
+
+rank20:
+mov ax,(int)19
+mov [esp+10],ax
+jmp exit
+
+rank21:
+mov ax,(int)19
+mov [esp+10],ax
+jmp exit
+
+rank22:
+mov ax,(int)22
+mov [esp+10],ax
+jmp exit
+
+rank23:
+mov ax,(int)22
+mov [esp+10],ax
+jmp exit
+
+rank24:
+mov ax,(int)22
+mov [esp+10],ax
+jmp exit
+
+rank25:
+mov ax,(int)25
+mov [esp+10],ax
+jmp exit
+
+rank26:
+mov ax,(int)25
+mov [esp+10],ax
+jmp exit
+
+rank27:
+mov ax,(int)25
+mov [esp+10],ax
+jmp exit
+
+rank28:
+mov ax,(int)30
+mov [esp+10],ax
+jmp exit
+
+rank29:
+mov ax,(int)30
+mov [esp+10],ax
+jmp exit
+
+rank30:
+mov ax,(int)30
+mov [esp+10],ax
+jmp exit
+
+rank31:
+mov ax,(int)45
+
+mov [esp+10],ax
+
+jmp exit
+
+originalcode:
+
+
+exit:
+jmp returnhere
+
+"ps_game.exe"+9D013:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"ps_game.exe"+9D013:
+mov ax,[esp+10]
+//Alt: db 66 8B 44 24 10
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

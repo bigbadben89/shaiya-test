@@ -1,14 +1,9 @@
-from os import getenv
-#import pymssql
+import utils 
 
-server = getenv("PYMSSQL_TEST_SERVER")
-user = getenv("PYMSSQL_TEST_USERNAME")
-password = getenv("PYMSSQL_TEST_PASSWORD")
-
-print server
 dbFile = "../config/db.txt"
 
 def parseConfig():
+    utils.show("Parsing database config: " + dbFile)
     sql = {}
     with open(dbFile) as f:
         for line in f.readlines():

@@ -7,3 +7,4 @@ Use PS_ChatLog
 go
 
 truncate table ChatLog
+

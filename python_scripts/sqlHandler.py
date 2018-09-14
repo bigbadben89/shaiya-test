@@ -3,7 +3,7 @@ import sys
 import subprocess
 import os
 
-dbFile = "../config/db.conf"
+dbFile = "..\\config\\db.conf"
 dbBackUpPath = "C:\\DATABASE_BACKUP\\"
 
 sqlCommon = "sqlcmd -U %s -P %s -S %s"

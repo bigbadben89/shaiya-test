@@ -39,6 +39,7 @@ def main():
     print "*** YOU HAVE CHANGED SERVER NAME TO " + serverName
     print ""
     print "*** YOUR GAME SERVER IP " + publicIp
+    print ""
     print "########################################"
 
 if __name__== "__main__":

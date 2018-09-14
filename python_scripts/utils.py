@@ -1,10 +1,12 @@
 import os
+import shutil
 import sys
+import subprocess
 from datetime import datetime
 
-shaiyaConfigPath = os.path.join("C:", "ShaiyaServer", "PSM_Client", "Bin", "Config")
-7zPath = os.path.join("C:", "Program Files", "7-Zip", "7z.exe")
-7zCompressCmd = r+ "" + 7zPath + " a %s %s"
+shaiyaConfigPath = os.path.join("C:\\", "ShaiyaServer", "PSM_Client", "Bin", "Config")
+_7zPath = os.path.join("C:\\", "Program Files", "7-Zip", "7z.exe")
+_7zCompressCmd = r"" + _7zPath + " a %s %s"
 
 def show(s):
     print "*** " + str(s).upper()
@@ -27,12 +29,12 @@ def executeCommand(c):
     subprocess.call(c, shell=False)
 
 def compress(parent, folderToCompress):
-    completePath = os.path.joint(parent, folderToCompress)
-    compressedFile = os.path.join(completePath + ".7z")
+    completePath = os.path.join(parent, folderToCompress)
+    compressedFile = completePath + ".7z"
     show("Compressing %s to %s" % (completePath, compressedFile))
-    executeCommand(7zCompressCmd % (compressedFile, completePath))
+    executeCommand(_7zCompressCmd % (compressedFile, completePath))
     show("Compressing done!!! Removing folder %s" % folderToCompress)
-    os.remove(completePath)
+    shutil.rmtree(completePath)
 
 def loadConfig(configFile):
     isFileExisted = checkIfFileExisted(configFile)
@@ -41,7 +43,7 @@ def loadConfig(configFile):
         return
 
     config = {}
-    with open(dbFile) as f:
+    with open(configFile) as f:
         for line in f.readlines():
             l = line.strip().split("=")
             config[l[0]] = l[1]

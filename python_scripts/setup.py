@@ -1,7 +1,9 @@
 import socket
+import os 
+import utils
 
-psGameFile = "C:\\ShaiyaServer\\PSM_Client\\Bin\\Config\\ps_game.ini"
-psSessionFile = "C:\\ShaiyaServer\\PSM_Client\\Bin\\Config\\ps_session.ini"
+psGameFile = os.path.join(utils.shaiyaConfigPath, "ps_game.ini")
+psSessionFile = os.path.join(utils.shaiyaConfigPath, "ps_session.ini")
 
 defaultServerName = "Shaiya SGolden"
 

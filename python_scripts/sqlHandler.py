@@ -3,26 +3,13 @@ import sys
 import subprocess
 import os
 
-dbFile = "..\\config\\db.conf"
-dbBackUpPath = "C:\\DATABASE_BACKUP\\"
+dbFile = os.path.join("..", "config", "db.conf")
+dbBackUpPath = os.path.join("C:", "DATABASE_BACKUP")
 
 sqlCommon = "sqlcmd -U %s -P %s -S %s"
 sqlBackUpQuery = "BACKUP DATABASE %s TO DISK = \"%s\" GO"
 sqlExecuteFile = ""
 sqlExecuteQuery = ""
-
-def loadDbConfig(dbFile):
-    isFileExisted = utils.checkIfFileExisted(dbFile)
-    if not isFileExisted:
-        sys.exit()
-        return
-
-    sql = {}
-    with open(dbFile) as f:
-        for line in f.readlines():
-            l = line.strip().split("=")
-            sql[l[0]] = l[1]
-    return sql 
 
 def executeSqlFile(sqlFile):
     if not utils.checkIfFileExisted(sqlFile):
@@ -40,30 +27,32 @@ if __name__== "__main__":
         utils.show("No operation has been given!!!")
         sys.exit()
 
-    sqlConf = loadDbConfig(dbFile)
+    sqlConf = utils.loadConfi(dbFile)
 
     if sqlConf:
         sqlCommon = sqlCommon % (sqlConf["db.user"], sqlConf["db.pass"], sqlConf["db.host"])
         sqlExecuteFile = sqlCommon + " -i %s"
         sqlExecuteQuery = sqlCommon + " -Q %s"
 
-    if operation == "execute":
-        executeSqlFile(sys.argv[2])
+    if operation == "executeFile":
+        sqlFile = sys.argv[2]
+        executeSqlFile(sqlFile)
     elif operation == "backup":
         currentTime = utils.getCurrentTime()
-        newDbBackUpPath = dbBackUpPath + currentTime     
+        newDbBackUpPath = os.path.join(dbBackUpPath, currentTime)
         utils.show("Creating  %s" % newDbBackUpPath)
-        os.mkdir(newDbBackUpPath)
+        utils.createDirectory(newDbBackUpPath)
     
         backUpQuery = sqlExecuteQuery % sqlBackUpQuery
-        executeSqlQuery(backUpQuery % ("PS_Billing", (newDbBackUpPath + "\\PS_Billing_" + currentTime)))
-        executeSqlQuery(backUpQuery % ("PS_ChatLog", (newDbBackUpPath + "\\PS_ChatLog_" + currentTime)))
-        executeSqlQuery(backUpQuery % ("PS_GameData", (newDbBackUpPath + "\\PS_GameData_" + currentTime)))
-        executeSqlQuery(backUpQuery % ("PS_GameDefs", (newDbBackUpPath + "\\PS_GameDefs_" + currentTime)))
-        executeSqlQuery(backUpQuery % ("PS_GameLog", (newDbBackUpPath + "\\PS_GameLog_" + currentTime)))
-        executeSqlQuery(backUpQuery % ("PS_GMTool", (newDbBackUpPath + "\\PS_GMTool_" + currentTime)))
-        executeSqlQuery(backUpQuery % ("PS_Statics", (newDbBackUpPath + "\\PS_Statics_" + currentTime)))
-        executeSqlQuery(backUpQuery % ("PS_UserData", (newDbBackUpPath + "\\PS_UserData_" + currentTime)))
+        executeSqlQuery(backUpQuery % ("OMG_GameWEB", os.path.joint(newDbBackUpPath, "OMG_GameWeb", currentTime)))
+        executeSqlQuery(backUpQuery % ("PS_Billing", os.path.joint(newDbBackUpPath, "PS_Billing", currentTime)))
+        executeSqlQuery(backUpQuery % ("PS_ChatLog", os.path.joint(newDbBackUpPath, "PS_ChatLog", currentTime)))
+        executeSqlQuery(backUpQuery % ("PS_GameData", os.path.joint(newDbBackUpPath, "PS_GameData", currentTime)))
+        executeSqlQuery(backUpQuery % ("PS_GameDefs", os.path.joint(newDbBackUpPath, "PS_GameDefs", currentTime)))
+        executeSqlQuery(backUpQuery % ("PS_GameLog", os.path.joint(newDbBackUpPath, "PS_GameLog", currentTime)))
+        executeSqlQuery(backUpQuery % ("PS_GMTool", os.path.joint(newDbBackUpPath, "PS_GMTool", currentTime)))
+        executeSqlQuery(backUpQuery % ("PS_Statics", os.path.joint(newDbBackUpPath, "PS_Statics", currentTime)))
+        executeSqlQuery(backUpQuery % ("PS_UserData", os.path.joint(newDbBackUpPath, "PS_Userdata", currentTime)))
 
         utils.compress(dbBackUpPath, currentTime)
     else:

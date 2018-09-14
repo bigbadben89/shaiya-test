@@ -1,3 +1,3 @@
-echo "Starting ingame auto notice..."
-python ..\python_scripts\inGameNotice.py
+cd ..\python_scripts
+python inGameNotice.py
 

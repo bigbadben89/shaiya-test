@@ -1,6 +1,7 @@
 import os
 import shutil
 import sys
+import io
 import subprocess
 from datetime import datetime
 
@@ -44,8 +45,8 @@ def loadConfig(configFile):
         return
 
     config = {}
-    with open(configFile) as f:
+    with io.open(configFile, encoding="utf-8") as f:
         for line in f.readlines():
             l = line.strip().split("=")
-            config[l[0]] = l[1]
+            config[l[0]] = l[1].encode('utf-8')
     return config

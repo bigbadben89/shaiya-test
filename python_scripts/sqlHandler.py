@@ -28,14 +28,11 @@ def executeSqlFile(sqlFile):
     if not utils.checkIfFileExisted(sqlFile):
         utils.show("Failed to execute %s" % sqlFile)
         return
-    executeCmd(sqlExecuteFile % sqlFile)   
+    utils.executeCommand(sqlExecuteFile % sqlFile)   
 
 def executeSqlQuery(query):
     utils.show("Executing %s" % query)
-    executeCmd(query)
-
-def executeCmd(cmd):
-    subprocess.call(cmd, shell=False)    
+    utils.executeCommand(query)
 
 if __name__== "__main__":
     operation = sys.argv[1]
@@ -67,5 +64,7 @@ if __name__== "__main__":
         executeSqlQuery(backUpQuery % ("PS_GMTool", (newDbBackUpPath + "\\PS_GMTool_" + currentTime)))
         executeSqlQuery(backUpQuery % ("PS_Statics", (newDbBackUpPath + "\\PS_Statics_" + currentTime)))
         executeSqlQuery(backUpQuery % ("PS_UserData", (newDbBackUpPath + "\\PS_UserData_" + currentTime)))
+
+        utils.compress(dbBackUpPath, currentTime)
     else:
         utils.show("Operation failed! We do not have %s operation" % operation)

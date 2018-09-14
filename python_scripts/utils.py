@@ -4,6 +4,7 @@ import sys
 import subprocess
 from datetime import datetime
 
+dbFile = os.path.join("..", "config", "db.conf")
 shaiyaConfigPath = os.path.join("C:\\", "ShaiyaServer", "PSM_Client", "Bin", "Config")
 _7zPath = os.path.join("C:\\", "Program Files", "7-Zip", "7z.exe")
 _7zCompressCmd = r"" + _7zPath + " a %s %s"

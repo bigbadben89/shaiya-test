@@ -3,7 +3,6 @@ import sys
 import subprocess
 import os
 
-dbFile = os.path.join("..", "config", "db.conf")
 dbBackUpPath = os.path.join("C:\\", "DATABASE_BACKUP")
 
 sqlCommon = "sqlcmd -U %s -P %s -S %s"
@@ -27,7 +26,7 @@ if __name__== "__main__":
         utils.show("No operation has been given!!!")
         sys.exit()
 
-    sqlConf = utils.loadConfig(dbFile)
+    sqlConf = utils.loadConfig(utils.dbFile)
 
     if sqlConf:
         sqlCommon = sqlCommon % (sqlConf["db.user"], sqlConf["db.pass"], sqlConf["db.host"])
@@ -37,6 +36,9 @@ if __name__== "__main__":
     if operation == "executeFile":
         sqlFile = sys.argv[2]
         executeSqlFile(sqlFile)
+    elif operation == "executeQuery":
+        sqlQuery = sys.argv[2]
+        executeSqlQuery(sqlQuery)
     elif operation == "backup":
         currentTime = utils.getCurrentTime()
         newDbBackUpPath = os.path.join(dbBackUpPath, currentTime)

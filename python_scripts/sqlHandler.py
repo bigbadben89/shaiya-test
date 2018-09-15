@@ -38,7 +38,7 @@ if __name__== "__main__":
         executeSqlFile(sqlFile)
     elif operation == "executeQuery":
         sqlQuery = sys.argv[2]
-        executeSqlQuery(sqlQuery)
+        executeSqlQuery(sqlExecuteQuery % sqlQuery)
     elif operation == "backup":
         currentTime = utils.getCurrentTime()
         newDbBackUpPath = os.path.join(dbBackUpPath, currentTime)

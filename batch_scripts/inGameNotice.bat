@@ -1,3 +1,3 @@
 cd ..\python_scripts
-python inGameNotice.py
+python serviceHandler.py inGameNotice
 

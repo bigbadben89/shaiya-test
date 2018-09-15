@@ -47,6 +47,7 @@ def loadConfig(configFile):
     config = {}
     with io.open(configFile, encoding="utf-8") as f:
         for line in f.readlines():
-            l = line.strip().split("=")
-            config[l[0]] = l[1].encode('utf-8')
+            if line.strip():
+                l = line.split("=")
+                config[l[0]] = l[1].encode('utf-8')
     return config

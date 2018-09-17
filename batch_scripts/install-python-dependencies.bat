@@ -1,3 +1,3 @@
-REM echo "Installing python dependencies..."
-start /W /B "pip install pymssql"
-start /W /B "pip install pyodbc"
+echo "Installing python dependencies..."
+start /W "pip install pymssql"
+start /W "pip install pyodbc"

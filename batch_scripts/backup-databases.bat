@@ -1,2 +1,2 @@
-REM echo "Backing database..."
-start /W /B "python ..\python_scripts\sqlHandler.py backup"
+echo "Backing database..."
+start /W "python ..\python_scripts\sqlHandler.py backup"

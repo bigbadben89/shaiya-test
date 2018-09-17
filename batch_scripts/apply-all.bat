@@ -5,3 +5,5 @@ cd batch_scripts
 start /W install-python-dependencies.bat
 start /W backup-databases.bat
 start /W clean-logs.bat
+
+exit

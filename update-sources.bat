@@ -1,5 +1,4 @@
-cd "C:\Tools\shaiya-test"
-git pull
-start /W "apply-all.bat"
+start /W /B "git pull"
+start /W /B "batch_scripts\apply-all.bat"
 
 exit

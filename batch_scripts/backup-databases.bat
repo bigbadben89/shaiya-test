@@ -1,5 +1,2 @@
-echo "Backing database..."
-python ..\python_scripts\sqlHandler.py backup
-
-timeout /T 15
-exit
+REM echo "Backing database..."
+start /W /B "python ..\python_scripts\sqlHandler.py backup"

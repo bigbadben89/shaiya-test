@@ -29,8 +29,8 @@ def inGameNotice(c):
         time.sleep(interval)
 
 if __name__== "__main__":
-    choice = sys.argv[1]
-    if choice == "inGameNotice":
+    choice = sys.argv[1].lower()
+    if choice == "ingamenotice":
         cmd = sqlCmd % psGameExec
         inGameNotice(cmd)
     elif choice == "nprotectoff":

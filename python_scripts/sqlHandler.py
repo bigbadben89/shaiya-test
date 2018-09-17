@@ -21,7 +21,7 @@ def executeSqlQuery(query):
     utils.executeCommand(query)
 
 if __name__== "__main__":
-    operation = sys.argv[1]
+    operation = sys.argv[1].lower()
     if not operation:
         utils.show("No operation has been given!!!")
         sys.exit()
@@ -33,10 +33,10 @@ if __name__== "__main__":
         sqlExecuteFile = sqlCommon + " -i \"%s\""
         sqlExecuteQuery = sqlCommon + " -Q \"%s\""
 
-    if operation == "executeFile":
+    if operation == "executefile":
         sqlFile = sys.argv[2]
         executeSqlFile(sqlFile)
-    elif operation == "executeQuery":
+    elif operation == "executequery":
         sqlQuery = sys.argv[2]
         executeSqlQuery(sqlExecuteQuery % sqlQuery)
     elif operation == "backup":
